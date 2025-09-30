@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/models/category_model.dart';
-import 'package:meals_app/screens/categories_screen/widgets/category_grid_item.dart';
+import 'package:meals_app/screens/categories_screen/widgets/category_item.dart';
 import 'package:meals_app/screens/meals_screen/meals_screen.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -18,23 +18,25 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Pick your category"),
       ),
-      body: GridView(
-        padding: const EdgeInsets.all(10),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+      body: SafeArea(
+        child: GridView(
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
+          children: [
+            for (final category in availableCategories)
+              CategoryItem(
+                category: category,
+                onSelectCategory: () {
+                  _selectCategory(context, category);
+                },
+              )
+          ],
         ),
-        children: [
-          for (final category in availableCategories)
-            CategoryGridItem(
-              category: category,
-              onSelectCategory: () {
-                _selectCategory(context, category);
-              },
-            )
-        ],
       ),
     );
   }

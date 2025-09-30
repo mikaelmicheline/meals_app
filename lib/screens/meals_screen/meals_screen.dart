@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/models/category_model.dart';
 import 'package:meals_app/models/meal_model.dart';
+import 'package:meals_app/screens/meal_details_screen/meal_details_screen.dart';
 import 'package:meals_app/screens/meals_screen/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
@@ -12,6 +13,11 @@ class MealsScreen extends StatelessWidget {
 
   final CategoryModel category;
   final List<MealModel> meals;
+
+  void _selectMeal(BuildContext context, MealModel meal) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (ctx) => MealDetailsScreen(meal: meal)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +48,23 @@ class MealsScreen extends StatelessWidget {
           )
         : ListView.builder(
             itemCount: meals.length,
-            itemBuilder: (ctx, index) => MealItem(meal: meals[index]),
+            itemBuilder: (ctx, index) => MealItem(
+              meal: meals[index],
+              onSelectMeal: () {
+                _selectMeal(
+                  context,
+                  meals[index],
+                );
+              },
+            ),
           );
 
     return Scaffold(
         appBar: AppBar(
           title: Text(category.title),
         ),
-        body: content);
+        body: SafeArea(
+          child: content,
+        ));
   }
 }
