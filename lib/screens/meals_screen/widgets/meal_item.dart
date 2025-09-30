@@ -22,7 +22,7 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(8),
+      margin: EdgeInsets.all(8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
@@ -45,8 +45,7 @@ class MealItem extends StatelessWidget {
               right: 0,
               child: Container(
                 color: Colors.black54,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
                 child: Column(
                   children: [
                     Text(
@@ -55,13 +54,13 @@ class MealItem extends StatelessWidget {
                       textAlign: TextAlign.center,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 12,
                     ),
                     Row(
@@ -71,14 +70,14 @@ class MealItem extends StatelessWidget {
                           icon: Icons.schedule,
                           label: '${meal.duration} min',
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 12,
                         ),
                         MealItemTrait(
                           icon: Icons.work,
                           label: complexityText,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 12,
                         ),
                         MealItemTrait(

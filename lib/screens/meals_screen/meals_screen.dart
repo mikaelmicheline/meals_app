@@ -4,6 +4,7 @@ import 'package:meals_app/models/category_model.dart';
 import 'package:meals_app/models/meal_model.dart';
 import 'package:meals_app/screens/meal_details_screen/meal_details_screen.dart';
 import 'package:meals_app/screens/meals_screen/widgets/meal_item.dart';
+import 'package:meals_app/shared/widgets/custom_app_bar.dart';
 
 class MealsScreen extends StatelessWidget {
   MealsScreen({super.key, required this.category})
@@ -33,7 +34,7 @@ class MealsScreen extends StatelessWidget {
                       .headlineLarge!
                       .copyWith(color: Theme.of(context).colorScheme.onSurface),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 16,
                 ),
                 Text(
@@ -60,9 +61,7 @@ class MealsScreen extends StatelessWidget {
           );
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(category.title),
-        ),
+        appBar: CustomAppBar(title: category.title),
         body: SafeArea(
           child: content,
         ));
