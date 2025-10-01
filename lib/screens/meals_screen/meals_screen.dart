@@ -4,7 +4,9 @@ import 'package:meals_app/models/category_model.dart';
 import 'package:meals_app/models/meal_model.dart';
 import 'package:meals_app/screens/meal_details_screen/meal_details_screen.dart';
 import 'package:meals_app/screens/meals_screen/widgets/meal_item.dart';
+import 'package:meals_app/shared/utils/spacing.dart';
 import 'package:meals_app/shared/widgets/custom_app_bar.dart';
+import 'package:meals_app/theme/text_styles.dart';
 
 class MealsScreen extends StatelessWidget {
   MealsScreen({super.key, required this.category})
@@ -28,35 +30,30 @@ class MealsScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Uh oh... nothing here!",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge!
-                      .copyWith(color: Theme.of(context).colorScheme.onSurface),
+                  "Nothing here :(",
+                  style: getTextStyle(fontSize: FontSize.fontSize4),
                 ),
-                SizedBox(
-                  height: 16,
-                ),
+                verticalSpace(14),
                 Text(
-                  "Try selecting a different category!",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: Theme.of(context).colorScheme.onSurface),
-                )
+                  "Try selecting a different category",
+                  style: getTextStyle(),
+                ),
               ],
             ),
           )
-        : ListView.builder(
-            itemCount: meals.length,
-            itemBuilder: (ctx, index) => MealItem(
-              meal: meals[index],
-              onSelectMeal: () {
-                _selectMeal(
-                  context,
-                  meals[index],
-                );
-              },
+        : Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: ListView.builder(
+              itemCount: meals.length,
+              itemBuilder: (ctx, index) => MealItem(
+                meal: meals[index],
+                onSelectMeal: () {
+                  _selectMeal(
+                    context,
+                    meals[index],
+                  );
+                },
+              ),
             ),
           );
 

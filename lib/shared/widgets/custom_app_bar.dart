@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/main.dart';
+import 'package:meals_app/theme/text_styles.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key, required this.title});
@@ -25,12 +26,20 @@ class _CustomBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(widget.title),
+      title: Text(
+        widget.title,
+        style: getTextStyle(
+          fontColor: FontColor.secondary,
+          fontSize: FontSize.fontSize6,
+        ),
+      ),
       actions: [
         IconButton(
-          icon: Icon(themeManager.themeMode == ThemeMode.dark
-              ? Icons.dark_mode
-              : Icons.light_mode),
+          icon: Icon(
+            themeManager.themeMode == ThemeMode.dark
+                ? Icons.dark_mode
+                : Icons.light_mode,
+          ),
           onPressed: _toggleTheme,
         ),
       ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal_model.dart';
 import 'package:meals_app/screens/meals_screen/widgets/meal_item_trait.dart';
+import 'package:meals_app/shared/utils/spacing.dart';
+import 'package:meals_app/theme/text_styles.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
@@ -54,15 +56,9 @@ class MealItem extends StatelessWidget {
                       textAlign: TextAlign.center,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      style: getTextStyle(fontColor: FontColor.secondary),
                     ),
-                    SizedBox(
-                      height: 12,
-                    ),
+                    verticalSpace(8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -70,16 +66,12 @@ class MealItem extends StatelessWidget {
                           icon: Icons.schedule,
                           label: '${meal.duration} min',
                         ),
-                        SizedBox(
-                          width: 12,
-                        ),
+                        horizontalSpace(20),
                         MealItemTrait(
-                          icon: Icons.work,
+                          icon: Icons.layers,
                           label: complexityText,
                         ),
-                        SizedBox(
-                          width: 12,
-                        ),
+                        horizontalSpace(20),
                         MealItemTrait(
                           icon: Icons.attach_money,
                           label: affordabilityText,

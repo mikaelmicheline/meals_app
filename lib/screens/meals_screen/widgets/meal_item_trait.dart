@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/shared/utils/spacing.dart';
+// import 'package:meals_app/theme/app_colors.dart';
+import 'package:meals_app/theme/text_styles.dart';
 
 class MealItemTrait extends StatelessWidget {
   const MealItemTrait({super.key, required this.icon, required this.label});
@@ -15,12 +18,11 @@ class MealItemTrait extends StatelessWidget {
           size: 17,
           color: Colors.white,
         ),
-        SizedBox(
-          width: 6,
-        ),
+        horizontalSpace(2),
         Text(
           label,
-          style: TextStyle(color: Colors.white),
+          style: getTextStyle(
+              fontColor: FontColor.secondary, fontSize: FontSize.fontSize0),
         ),
       ],
     );

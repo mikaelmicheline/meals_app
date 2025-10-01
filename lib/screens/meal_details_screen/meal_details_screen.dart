@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal_model.dart';
+import 'package:meals_app/shared/utils/spacing.dart';
 import 'package:meals_app/shared/widgets/custom_app_bar.dart';
+import 'package:meals_app/theme/text_styles.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({super.key, required this.meal});
@@ -12,7 +14,7 @@ class MealDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: meal.title),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
             Image.network(
               meal.imageUrl,
@@ -20,10 +22,46 @@ class MealDetailsScreen extends StatelessWidget {
               height: 300,
               width: double.infinity,
             ),
-            SizedBox(
-              height: 14,
-            ),
-            Text('Ingredients')
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  verticalSpace(14),
+                  Text(
+                    'Recipe',
+                    style: getTextStyle(fontSize: FontSize.fontSize3),
+                  ),
+                  verticalSpace(14),
+                  Text(
+                    meal.title,
+                    style: getTextStyle(fontSize: FontSize.fontSize1),
+                  ),
+                  verticalSpace(14),
+                  Text(
+                    'Ingredients',
+                    style: getTextStyle(fontSize: FontSize.fontSize3),
+                  ),
+                  verticalSpace(14),
+                  for (final ingredient in meal.ingredients)
+                    Text(
+                      ingredient,
+                      style: getTextStyle(fontSize: FontSize.fontSize1),
+                    ),
+                  verticalSpace(14),
+                  Text(
+                    'Steps',
+                    style: getTextStyle(fontSize: FontSize.fontSize3),
+                  ),
+                  verticalSpace(14),
+                  for (final step in meal.steps)
+                    Text(
+                      step,
+                      style: getTextStyle(fontSize: FontSize.fontSize1),
+                    ),
+                ],
+              ),
+            )
           ],
         ),
       ),

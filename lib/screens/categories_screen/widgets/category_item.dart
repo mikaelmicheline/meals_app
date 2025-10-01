@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/category_model.dart';
+// import 'package:meals_app/theme/app_colors.dart';
+import 'package:meals_app/theme/text_styles.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem(
@@ -13,14 +15,14 @@ class CategoryItem extends StatelessWidget {
     return InkWell(
       onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(14),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(14),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              category.color.withValues(alpha: 0.5),
-              category.color,
+              category.color2,
+              category.color1,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -29,9 +31,9 @@ class CategoryItem extends StatelessWidget {
         ),
         child: Text(
           category.title,
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
+          style: getTextStyle(
+            fontColor: FontColor.secondary,
+          ),
         ),
       ),
     );
