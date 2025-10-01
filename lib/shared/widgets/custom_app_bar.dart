@@ -8,7 +8,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
 
   @override
-  State<StatefulWidget> createState() {
+  State<CustomAppBar> createState() {
     return _CustomBarState();
   }
 

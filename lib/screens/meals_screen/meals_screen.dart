@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/data/dummy_data.dart';
-import 'package:meals_app/models/category_model.dart';
 import 'package:meals_app/models/meal_model.dart';
 import 'package:meals_app/screens/meal_details_screen/meal_details_screen.dart';
 import 'package:meals_app/screens/meals_screen/widgets/meal_item.dart';
@@ -9,13 +7,12 @@ import 'package:meals_app/shared/widgets/custom_app_bar.dart';
 import 'package:meals_app/theme/text_styles.dart';
 
 class MealsScreen extends StatelessWidget {
-  MealsScreen({super.key, required this.category})
-      : meals = availableMeals
-            .where((meal) => meal.categories.contains(category.id))
-            .toList();
+  const MealsScreen(
+      {super.key, required this.meals, required this.emptyText, this.title});
 
-  final CategoryModel category;
   final List<MealModel> meals;
+  final String? title;
+  final String emptyText;
 
   void _selectMeal(BuildContext context, MealModel meal) {
     Navigator.push(context,
@@ -35,7 +32,7 @@ class MealsScreen extends StatelessWidget {
                 ),
                 verticalSpace(14),
                 Text(
-                  "Try selecting a different category",
+                  emptyText,
                   style: getTextStyle(),
                 ),
               ],
@@ -57,8 +54,12 @@ class MealsScreen extends StatelessWidget {
             ),
           );
 
+    if (title == null) {
+      return content;
+    }
+
     return Scaffold(
-        appBar: CustomAppBar(title: category.title),
+        appBar: CustomAppBar(title: title!),
         body: SafeArea(
           child: content,
         ));

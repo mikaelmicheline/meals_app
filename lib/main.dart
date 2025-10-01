@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/screens/categories_screen/categories_screen.dart';
+import 'package:meals_app/screens/tabs_screen/tabs_screen.dart';
 import 'package:meals_app/theme/theme_dark.dart';
 import 'package:meals_app/theme/theme_light.dart';
 import 'package:meals_app/theme/theme_manager.dart';
@@ -14,7 +14,7 @@ class App extends StatefulWidget {
   const App({super.key});
 
   @override
-  State<StatefulWidget> createState() {
+  State<App> createState() {
     return _AppState();
   }
 }
@@ -44,7 +44,7 @@ class _AppState extends State<App> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeManager.themeMode,
-      home: CategoriesScreen(),
+      home: TabsScreen(),
     );
   }
 }

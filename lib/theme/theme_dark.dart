@@ -11,4 +11,10 @@ ThemeData darkTheme = ThemeData(
     backgroundColor: AppColors.blue9,
     foregroundColor: AppColors.white,
   ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: AppColors.blue9,
+    elevation: 0,
+    selectedItemColor: AppColors.white,
+    unselectedItemColor: AppColors.gray3,
+  ),
 );
