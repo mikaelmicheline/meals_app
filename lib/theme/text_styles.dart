@@ -17,7 +17,7 @@ enum FontSize {
   final double fontSize;
   const FontSize(this.fontSize);
 
-  double _toDouble() {
+  double toDouble() {
     return fontSize;
   }
 }
@@ -46,7 +46,7 @@ TextStyle getTextStyle(
     {FontColor? fontColor, FontSize? fontSize, FontWeight? fontWeight}) {
   return TextStyle(
     color: fontColor?._toColor() ?? FontColor.primary._toColor(),
-    fontSize: fontSize?._toDouble() ?? FontSize.fontSize2._toDouble(),
+    fontSize: fontSize?.toDouble() ?? FontSize.fontSize2.toDouble(),
     fontWeight: fontWeight ?? FontWeight.w400,
   );
 }

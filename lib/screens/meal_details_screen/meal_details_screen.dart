@@ -5,14 +5,26 @@ import 'package:meals_app/shared/widgets/custom_app_bar.dart';
 import 'package:meals_app/theme/text_styles.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key, required this.meal});
+  const MealDetailsScreen(
+      {super.key, required this.meal, required this.onToggleFavorite});
 
   final MealModel meal;
+  final void Function(MealModel meal) onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: meal.title),
+      appBar: CustomAppBar(
+        title: meal.title,
+        actions: [
+          IconButton(
+            onPressed: () {
+              onToggleFavorite(meal);
+            },
+            icon: Icon(Icons.star),
+          )
+        ],
+      ),
       body: SafeArea(
         child: ListView(
           children: [

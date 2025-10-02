@@ -3,9 +3,10 @@ import 'package:meals_app/main.dart';
 import 'package:meals_app/theme/text_styles.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, this.actions});
 
   final String title;
+  final List<Widget>? actions;
 
   @override
   State<CustomAppBar> createState() {
@@ -34,6 +35,8 @@ class _CustomBarState extends State<CustomAppBar> {
         ),
       ),
       actions: [
+        if (widget.actions != null)
+          for (final action in widget.actions!) action,
         IconButton(
           icon: Icon(
             themeManager.themeMode == ThemeMode.dark

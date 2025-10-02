@@ -7,16 +7,29 @@ import 'package:meals_app/shared/widgets/custom_app_bar.dart';
 import 'package:meals_app/theme/text_styles.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen(
-      {super.key, required this.meals, required this.emptyText, this.title});
+  const MealsScreen({
+    super.key,
+    required this.meals,
+    required this.emptyText,
+    required this.onToggleFavorite,
+    this.title,
+  });
 
   final List<MealModel> meals;
   final String? title;
   final String emptyText;
+  final void Function(MealModel meal) onToggleFavorite;
 
   void _selectMeal(BuildContext context, MealModel meal) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (ctx) => MealDetailsScreen(meal: meal)));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => MealDetailsScreen(
+          meal: meal,
+          onToggleFavorite: onToggleFavorite,
+        ),
+      ),
+    );
   }
 
   @override

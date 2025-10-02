@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/models/category_model.dart';
+import 'package:meals_app/models/meal_model.dart';
 import 'package:meals_app/screens/categories_screen/widgets/category_item.dart';
 import 'package:meals_app/screens/meals_screen/meals_screen.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen({super.key, required this.onToggleFavorite});
+
+  final void Function(MealModel meal) onToggleFavorite;
 
   void _selectCategory(BuildContext context, CategoryModel category) {
     final meals = availableMeals
@@ -19,6 +22,7 @@ class CategoriesScreen extends StatelessWidget {
           meals: meals,
           title: category.title,
           emptyText: "Try selecting a different category",
+          onToggleFavorite: onToggleFavorite,
         ),
       ),
     );
